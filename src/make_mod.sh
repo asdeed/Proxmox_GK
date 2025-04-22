@@ -115,7 +115,9 @@ guest_qm_ipconfig(){
   #### IP attribution
     if [ "$GS_NETCONF" == "dhcp" ]; then
       qm set "$key" --ipconfig"$QS_NET_ETH" ip=dhcp >/dev/null
-      qm set "$key" --nameserver "$GS_DNS00 $GS_DNS01"  >/dev/null
+      if [ "$GS_OVERRIDE_DNS_FROM_DHCP" = "1" ]; then
+        qm set "$key" --nameserver "$GS_DNS00 $GS_DNS01"  >/dev/null
+      fi
 #     TODO qm set "$key" --searchdomain "local" >/dev/null
     else
       qm set "$key" --ipconfig"$QS_NET_ETH" ip="${slug_serv[$key]}/$GS_CIDR,gw=$GS_GATE" >/dev/null
@@ -271,8 +273,10 @@ guest_lxc_ipconfig(){
   #### IP attribution
     if [ "$GS_NETCONF" == "dhcp" ]; then
       pct set "$key" --net"$CS_NET_ETH" \
-      name="$CS_NET_NAME""$CS_NET_ETH",ip=dhcp,bridge="$GS_NETBR",gw="$GS_GATE" >/dev/null
-      pct set "$key" --nameserver "$GS_DNS00 $GS_DNS01"  >/dev/null
+      name="$CS_NET_NAME""$CS_NET_ETH",ip=dhcp,bridge="$GS_NETBR" >/dev/null
+      if [ "$GS_OVERRIDE_DNS_FROM_DHCP" = "1" ]; then
+        qm set "$key" --nameserver "$GS_DNS00 $GS_DNS01"  >/dev/null
+      fi
 #      pct set "$key" --searchdomain "local" >/dev/null
     else
       pct set "$key" --net"$CS_NET_ETH" \
