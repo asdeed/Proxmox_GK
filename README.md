@@ -1,4 +1,5 @@
-  
+
+
 ![Alt text](https://asded.fr/img/pgk_itxt00.svg)
 
 *Proxmox GK aka **P**roxmox **G**uests **K**ickstart*  
@@ -26,7 +27,7 @@ Third-party Proxmox bash utility to automate deployment of LXC and QEMU/KVM gues
 | Fedora        |   39    |    ✅      |   ✅    |        ✅          |
 |               |   40    |    ✅      |   ✅    |        ✅          |
 | CentOS stream |    9    |    ✅      |   ✅    |        ✅          |
-| Alamalinux    |    8    |    ✅      |   ✅    |        ✅          |
+| AlmaLinux     |    8    |    ✅      |   ✅    |        ✅          |
 |               |    9    |    ✅      |   ✅    |        ✅          |
 | Rocky Linux   |    9    |    ✅      |   ✅    |        ✅          |
 | OpenSUSE      |  15.4   |    ❌      |   ✅    |        ✅          |
